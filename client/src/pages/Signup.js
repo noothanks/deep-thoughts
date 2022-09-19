@@ -2,14 +2,20 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 
+//get auth from utils
+//allows for use of token
 import Auth from '../utils/auth';
 
 const Signup = () => {
+  //set form state to empty strings
+  //init setter
   const [formState, setFormState] = useState({
     username: '',
     email: '',
     password: '',
   });
+  //attaches add user mutation to name
+  //enables error handling
   const [addUser, { error }] = useMutation(ADD_USER);
 
   // update state based on form input changes
@@ -27,16 +33,21 @@ const Signup = () => {
     event.preventDefault();
 
     try {
+      //pass in data from form
+      //conduct addUser function
       const { data } = await addUser({
         variables: { ...formState },
       });
 
+      //stores token to localStorage
       Auth.login(data.addUser.token);
     } catch (e) {
       console.error(e);
     }
   };
 
+  //create form
+  //conditionally render error div if needed
   return (
     <main className="flex-row justify-center mb-4">
       <div className="col-12 col-md-6">

@@ -1,5 +1,9 @@
+//stores all graphWL query requests
 import { gql } from '@apollo/client';
 
+//wrap in tagged template literal
+//export
+//allows query function to be imported by name
 export const QUERY_THOUGHTS = gql`
   query thoughts($username: String) {
     thoughts(username: $username) {
@@ -18,6 +22,7 @@ export const QUERY_THOUGHTS = gql`
   }
 `;
 
+//get single thought data
 export const QUERY_THOUGHT = gql`
   query thought($id: ID!) {
     thought(_id: $id) {
@@ -36,6 +41,7 @@ export const QUERY_THOUGHT = gql`
   }
 `;
 
+//get user data
 export const QUERY_USER = gql`
   query user($username: String!) {
     user(username: $username) {
@@ -57,6 +63,7 @@ export const QUERY_USER = gql`
   }
 `;
 
+//retrieve all data based on the logged in user
 export const QUERY_ME = gql`
   {
     me {
@@ -84,6 +91,7 @@ export const QUERY_ME = gql`
   }
 `;
 
+//simplified version for the home page
 export const QUERY_ME_BASIC = gql`
   {
     me {

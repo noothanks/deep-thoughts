@@ -2,6 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ReactionList = ({ reactions }) => {
+  //pass in reactions arr from singleThought
+  //map into list of <p> elements
+  //reaction should include authors name
+  //name should route to profile page
   return (
     <div className="card mb-3">
       <div className="card-header">

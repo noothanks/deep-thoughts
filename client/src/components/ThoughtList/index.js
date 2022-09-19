@@ -1,11 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+//destructure thoughts arr and title prop
 const ThoughtList = ({ thoughts, title }) => {
+  //conditionally render based on whether or not the thought arr is populated
   if (!thoughts.length) {
     return <h3>No Thoughts Yet</h3>;
   }
 
+  //map over thoughts arr to create a section for each thought
+  //saves key to thought id
+  //keeps track of what gets changed and rerenders accordungly
   return (
     <div>
       <h3>{title}</h3>

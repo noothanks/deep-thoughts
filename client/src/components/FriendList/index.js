@@ -6,6 +6,8 @@ const FriendList = ({ friendCount, username, friends }) => {
     return <p className="bg-dark text-light p-3">{username}, make some friends!</p>;
   }
 
+  //map through friends to create links to their profiles
+  //associate destructured props
   return (
     <div>
       <h5>

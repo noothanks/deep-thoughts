@@ -1,6 +1,8 @@
 import decode from 'jwt-decode';
 
+//create class to be instantiated on each import
 class AuthService {
+  //retrieve the data and save in token
   getProfile() {
     return decode(this.getToken());
   }
@@ -8,9 +10,11 @@ class AuthService {
   loggedIn() {
     // Checks if there is a saved token and it's still valid
     const token = this.getToken();
-    return !!token && !this.isTokenExpired(token);
+    //make sure the token is defined and not expired
+    return !!token && !this.isTokenExpired(token); // handwaiving here
   }
 
+  //checks if token is expired
   isTokenExpired(token) {
     try {
       const decoded = decode(token);
@@ -36,6 +40,7 @@ class AuthService {
 
   logout() {
     // Clear user token and profile data from localStorage
+    // axios.defaults.headers.common["Authorization"] = null;
     localStorage.removeItem('id_token');
     // this will reload the page and reset the state of the application
     window.location.assign('/');
